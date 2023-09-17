@@ -1,0 +1,229 @@
+.Menu{
+  height: 100%;
+  width: 80px;
+  background-color: #2680D9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: width 0.1s linear;
+
+  &__User{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+
+    &:hover{
+      background: #1A69B8;
+      cursor: pointer;
+    }
+
+    &_open-mode{
+      height: 210px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__User-Avatar{
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+
+    &_open-mode{
+      height: 80px;
+      width: 80px;
+    }
+  }
+
+  &__User-Name{
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 12px;
+    letter-spacing: 0.1px;
+  }
+
+  &__User-Status{
+    color: #ffffff;
+    margin-top: 10px;
+    font-family: Roboto, 'sans-serif';
+    letter-spacing: 0.4px;
+    position: relative;
+
+    &:before{
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      display: block;
+      border-radius: 50%;
+      background-color: #01BF93;
+      top: 4px;
+      left: -16px;
+    }
+  }
+
+  &__User-Avatar-IMG{
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__Dialogs{
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: 0.2s;
+
+    &_current{
+      background: #1A69B8;
+    }
+
+    &_open-mode{
+      justify-content: start;
+      padding-left: 28px;
+      padding-right: 22px;
+    }
+
+    &:hover{
+      background: #1A69B8;
+      cursor: pointer;
+    }
+  }
+
+  &__Dialogs-SVG{
+    fill: #58AAFC;
+
+    &_picked{
+      fill: #ffffff;
+    }
+
+  }
+
+  &__Dialogs-Title{
+    font-size: 14px;
+    color: #58AAFC;
+    letter-spacing: 0.1px;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 20px;
+    font-weight: bold;
+
+    &_picked{
+      color: white;
+    }
+  }
+
+  &__Dialogs-Badge{
+    padding: 0 5px;
+    height: 14px;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 8px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #F53648;
+    position: absolute;
+    min-width: 14px;
+    text-align: center;
+    line-height: 14px;
+    top: 39px;
+    right: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_size-big{
+      position: static;
+      min-width: 22px;
+      height: 22px;
+      font-size: 12px;
+      margin-left: auto;
+    }
+  }
+
+  &__Settings{
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+
+    &_current{
+      background: #1A69B8;
+    }
+
+    &:hover{
+      background: #1A69B8;
+      cursor: pointer;
+    }
+
+    &_open-mode{
+      justify-content: start;
+      padding-left: 28px;
+      padding-right: 22px;
+    }
+  }
+
+  &__Settings-Title{
+    margin-left: 20px;
+    font-size: 14px;
+    color: #58AAFC;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+
+    &_picked {
+      color: #ffffff;
+    }
+  }
+
+  &__Settings-SVG{
+    fill: #58AAFC;
+
+    &_picked{
+      fill: #ffffff;
+    }
+  }
+
+  &__Bottom{
+    padding: 20px;
+  }
+
+  &__Collapse-BTN{
+    height: 30px;
+    width: 100%;
+    background-color: #58AAFC;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+    &:hover {
+      .Menu__Collapse-SVG{
+        fill: white;
+      }
+    }
+  }
+
+  &__Collapse-SVG{
+    fill: #2680D9;
+    transition: 0.3s fill linear;
+
+    &_close{
+      transition: 0.1s transform linear;
+      transform: rotate(-180deg);
+    }
+  }
+
+  &_opened{
+    width: 250px;
+  }
+}
