@@ -1,0 +1,63 @@
+.Dialogs{
+  min-width: 345px;
+  height: 100%;
+  background-color: #fff;
+
+  &__Search{
+    height: 70px;
+    border-bottom: 1px solid #CCD1D6;
+    display: flex;
+    padding: 20px 14px;
+  }
+
+  &__Search-Input{
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid transparent;
+    background: #E7ECF1;
+    padding: 5px 16px;
+    color: #6D84A0;
+    letter-spacing: 0.4px;
+    font-size: 14px;
+    transition: 0.1s linear;
+    font-family: 'Roboto', sans-serif;
+
+    &::placeholder{
+      color: #6D84A0;
+      letter-spacing: 0.4px;
+      line-height: 20px;
+      font-size: 14px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    &:focus{
+      border-color: #6D84A0;
+      outline: none;
+    }
+  }
+
+  &__List{
+    width: 100%;
+    overflow: auto;
+    height: calc(100vh - 70px);
+  }
+
+  &__List-Scroll{
+    background: rgba(17, 68, 117, 0.5);
+    position: relative;
+    border-radius: 3px;
+    width: 6px;
+  }
+
+  &__List-Test{
+    height: 70px;
+
+    &:hover{
+      background: #2680D9;
+    }
+  }
+}
+
+.simplebar-vertical{
+  width: 9px !important;
+}
