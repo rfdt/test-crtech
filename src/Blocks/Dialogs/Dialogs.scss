@@ -1,7 +1,15 @@
 .Dialogs{
-  min-width: 345px;
+  width: 345px;
   height: 100%;
   background-color: #fff;
+
+  @media screen and (max-width: 1100px) {
+    width: 300px;
+  }
+
+  @media screen and (max-width: 900px) {
+    width: 280px;
+  }
 
   &__Search{
     height: 70px;
@@ -56,6 +64,7 @@
       background: #2680D9;
     }
   }
+
 }
 
 .simplebar-vertical{

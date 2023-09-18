@@ -7,7 +7,7 @@ function Dialog() {
     const dialogBlock = cn('Dialog')
     const [currentPicked, setIsCurrentPicked] = useState(false);
     const [unreaded, setIsUnreaded] = useState(true);
-    const [isTyping, setIsTyping] = useState(true)
+    const [isTyping, setIsTyping] = useState(false)
 
     return (
         <div className={dialogBlock({current: currentPicked})}>
@@ -15,6 +15,7 @@ function Dialog() {
                 <img className={dialogBlock('Avatar-IMG')} src='http://mainfun.ru/images/11/genetic/Portraits_08.jpg'
                      alt='Avatar'
                 />
+                {/* Проверка на онлайн*/}
                 <div className={dialogBlock('Avatar-Online-Badge', {current: currentPicked})}></div>
             </div>
             <div className={dialogBlock('Companion')}>
