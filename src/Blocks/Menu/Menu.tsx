@@ -4,12 +4,16 @@ import './Menu.scss';
 import {ReactComponent as DialogsSvg} from '../../assets/svg/dialogs.svg';
 import {ReactComponent as SettingsSvg} from "../../assets/svg/settings.svg";
 import {ReactComponent as OpenSvg} from "../../assets/svg/open.svg";
+import {observer} from "mobx-react-lite";
+import DialogsStore from "../../store/dialogs";
 
-function Menu() {
+const Menu = observer(() =>{
+
+    const {unreadedDialogsCount} = DialogsStore;
 
     const menuBlock = cn('Menu') // блок
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [currentMenu, setCurrentMenu] = useState('settings');
+    const [currentMenu, setCurrentMenu] = useState('dialogs');
 
     return (
         <div className={menuBlock({opened: isOpen})}>
@@ -26,7 +30,7 @@ function Menu() {
                     <DialogsSvg className={menuBlock('Dialogs-SVG', {'picked': currentMenu === 'dialogs'})}/>
                     {isOpen && <div className={menuBlock('Dialogs-Title', {'picked': currentMenu === 'dialogs'})}>ДИАЛОГИ</div>}
                     <div className={menuBlock('Dialogs-Badge', {'size-big': isOpen})}>
-                        12
+                        {unreadedDialogsCount}
                     </div>
                 </li>
                 <li className={menuBlock('Settings', {current: currentMenu === 'settings', 'open-mode': isOpen})}>
@@ -43,6 +47,6 @@ function Menu() {
             </ul>
         </div>
     );
-}
+});
 
 export default Menu;

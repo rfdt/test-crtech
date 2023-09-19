@@ -1,53 +1,65 @@
-import React, {useState} from 'react';
+import React, {FunctionComponent, useState} from 'react';
 import {cn} from "../../scripts/cn";
 import './Dialog.scss';
+import {IDialog} from "../../types/IDialog";
+import {observer} from "mobx-react-lite";
+import DialogsStore from '../../store/dialogs';
+import {toLocaleTimeString} from "../../scripts/toLocaleTimeString";
 
-function Dialog() {
+interface DialogsProps {
+    dialog: IDialog;
+}
+
+export const  Dialog : FunctionComponent<DialogsProps> = observer(({dialog})=> {
+
+    const {thisCurrentChat, getFirstUnreadedMessageInChat, getUnreadedCount, setDialog} = DialogsStore;
 
     const dialogBlock = cn('Dialog')
-    const [currentPicked, setIsCurrentPicked] = useState(false);
     const [unreaded, setIsUnreaded] = useState(true);
     const [isTyping, setIsTyping] = useState(false)
 
     return (
-        <div className={dialogBlock({current: currentPicked})}>
+        <div className={dialogBlock({current: thisCurrentChat(dialog.user_id)})} onClick={()=>setDialog(dialog.user_id)}>
             <div className={dialogBlock('Avatar')}>
-                <img className={dialogBlock('Avatar-IMG')} src='http://mainfun.ru/images/11/genetic/Portraits_08.jpg'
+                <img className={dialogBlock('Avatar-IMG')} src={dialog.user_avatar}
                      alt='Avatar'
                 />
-                {/* Проверка на онлайн*/}
-                <div className={dialogBlock('Avatar-Online-Badge', {current: currentPicked})}></div>
+                {dialog.user_online_status ?
+                    <div className={dialogBlock('Avatar-Online-Badge', {current: thisCurrentChat(dialog.user_id)})}></div>
+                    : null
+                }
             </div>
             <div className={dialogBlock('Companion')}>
-                <div className={dialogBlock('Companion-Name', {current: currentPicked})}>
-                    Дмитрий Анатольевич
+                <div className={dialogBlock('Companion-Name', {current: thisCurrentChat(dialog.user_id)})}>
+                    {dialog.user_name}
                 </div>
-                {isTyping ?
+                {dialog.user_isTyping ?
                     <div className={dialogBlock('Companion-Writing')}>
-                        <span className={dialogBlock('Companion-Writing-Dot', {current: currentPicked})}></span>
-                        <span className={dialogBlock('Companion-Writing-Dot', {current: currentPicked})}></span>
-                        <span className={dialogBlock('Companion-Writing-Dot', {current: currentPicked})}></span>
+                        <span className={dialogBlock('Companion-Writing-Dot', {current: thisCurrentChat(dialog.user_id)})}></span>
+                        <span className={dialogBlock('Companion-Writing-Dot', {current: thisCurrentChat(dialog.user_id)})}></span>
+                        <span className={dialogBlock('Companion-Writing-Dot', {current: thisCurrentChat(dialog.user_id)})}></span>
                         <span
-                            className={dialogBlock('Companion-Writing-Title', {current: currentPicked})}>Печатает</span>
+                            className={dialogBlock('Companion-Writing-Title', {current: thisCurrentChat(dialog.user_id)})}>Печатает</span>
                     </div>
                     :
-                    <div className={dialogBlock('Companion-Text', {current: currentPicked})}>
-                        Документы будут готовы к следюущем отчетному 2023 году 21 века.
+                    <div className={dialogBlock('Companion-Text', {current: thisCurrentChat(dialog.user_id)})}>
+                        {/* Получаем первое непрочитанное или последнее сообщение в чате */}
+                        {getFirstUnreadedMessageInChat(dialog.user_id)?.message_content || ""}
                     </div>
                 }
             </div>
             <div className={dialogBlock('Info')}>
-                <div className={dialogBlock('Info-Time', {current: currentPicked})}>
-                    10:43
+                <div className={dialogBlock('Info-Time', {current: thisCurrentChat(dialog.user_id)})}>
+                    {toLocaleTimeString(getFirstUnreadedMessageInChat(dialog.user_id)?.message_send_time)}
                 </div>
                 {
-                    unreaded && <div className={dialogBlock('Info-Unreaded-Count')}>
-                        1151
+                    unreaded && <div className={dialogBlock('Info-Unreaded-Count', {current: thisCurrentChat(dialog.user_id)})}>
+                        {getUnreadedCount(dialog.user_id)}
                     </div>
                 }
             </div>
         </div>
     );
-}
+});
 
 export default Dialog;

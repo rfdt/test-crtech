@@ -1,0 +1,54 @@
+.Chat{
+  &__Loading-Message-From{
+    display: flex;
+    margin-top: 20px;
+    padding: 8px 16px 6px 16px;
+    width: 100%;
+    max-width: 320px;
+    min-height: 60px;
+    border-radius: 16px 16px 4px 4px;
+    background-color: rgba(#262626, 0.6);
+    box-shadow: 0px 2px 4px 0px rgba(28, 41, 61, 0.12), 0px 0px 1px 0px rgba(28, 41, 61, 0.20);
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  &__Loading-Message-To{
+    display: flex;
+    margin-top: 20px;
+    padding: 8px 16px 6px 16px;
+    width: 100%;
+    max-width: 320px;
+    min-height: 60px;
+    border-radius: 16px 16px 4px 16px;
+    background-color: rgba(#267FDB, 0.6);
+    box-shadow: 0px 2px 4px 0px rgba(28, 41, 61, 0.12), 0px 0px 1px 0px rgba(28, 41, 61, 0.20);
+    margin-left: auto;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  &__Loading-Message-Flare{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 45px;
+    transform: skewX(-45deg);
+    left: -150%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4));
+    animation: flareAnimation 5s infinite linear;
+
+    @keyframes flareAnimation {
+      0% {
+        left: -150%;
+      }
+      50% {
+        left: 150%;
+      }
+      100%{
+        left: -150%;
+        transform: skewX(45deg);
+      }
+    }
+  }
+}
