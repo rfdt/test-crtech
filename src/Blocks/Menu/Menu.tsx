@@ -29,9 +29,10 @@ const Menu = observer(() =>{
                 <li className={menuBlock('Dialogs', {current: currentMenu === 'dialogs', 'open-mode': isOpen})}>
                     <DialogsSvg className={menuBlock('Dialogs-SVG', {'picked': currentMenu === 'dialogs'})}/>
                     {isOpen && <div className={menuBlock('Dialogs-Title', {'picked': currentMenu === 'dialogs'})}>ДИАЛОГИ</div>}
+                    {unreadedDialogsCount > 0 ?
                     <div className={menuBlock('Dialogs-Badge', {'size-big': isOpen})}>
                         {unreadedDialogsCount}
-                    </div>
+                    </div> : null}
                 </li>
                 <li className={menuBlock('Settings', {current: currentMenu === 'settings', 'open-mode': isOpen})}>
                     <SettingsSvg className={menuBlock('Settings-SVG', {'picked': currentMenu === 'settings'})}/>

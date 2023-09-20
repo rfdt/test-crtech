@@ -1,19 +1,24 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {chatBlock} from "../../Chat";
 import './InputMessage.scss';
+import {IMessage} from "../../../../types/IMessage";
+import {toLocaleHourString} from "../../../../scripts/toLocaleHourString";
 
-function InputMessage() {
+interface InputMessageProps{
+    order: string;
+    message: IMessage;
+}
+const InputMessage:FC<InputMessageProps> = ({order, message}) => {
     return (
-        <div className={chatBlock('Message-From')}>
+        <div className={chatBlock('Message-From',  {'second-message': order === 'second', 'first-message': order ==='first'})}
+             data-message-readed={message.message_read}
+             data-message-id={message.message_id}
+        >
             <div className={chatBlock('Message-From-Content')}>
-                Каждый веб-разработчик знает, что такое текст-«рыба». Текст этот, несмотря на
-                название, не имеет
-                никакого отношения к обитателям водоемов. Используется он веб- дизайнерами для
-                вставки на
-                интернет-страницы.
+                {message.message_content}
             </div>
             <div className={chatBlock('Message-From-Time')}>
-                10:27
+                {toLocaleHourString(message.message_send_time)}
             </div>
         </div>
     );

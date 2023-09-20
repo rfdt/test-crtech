@@ -4,7 +4,7 @@ import './Dialog.scss';
 import {IDialog} from "../../types/IDialog";
 import {observer} from "mobx-react-lite";
 import DialogsStore from '../../store/dialogs';
-import {toLocaleTimeString} from "../../scripts/toLocaleTimeString";
+import {toLocaleHourString} from "../../scripts/toLocaleHourString";
 
 interface DialogsProps {
     dialog: IDialog;
@@ -50,12 +50,12 @@ export const  Dialog : FunctionComponent<DialogsProps> = observer(({dialog})=> {
             </div>
             <div className={dialogBlock('Info')}>
                 <div className={dialogBlock('Info-Time', {current: thisCurrentChat(dialog.user_id)})}>
-                    {toLocaleTimeString(getFirstUnreadedMessageInChat(dialog.user_id)?.message_send_time)}
+                    {toLocaleHourString(getFirstUnreadedMessageInChat(dialog.user_id)?.message_send_time)}
                 </div>
                 {
-                    unreaded && <div className={dialogBlock('Info-Unreaded-Count', {current: thisCurrentChat(dialog.user_id)})}>
+                    getUnreadedCount(dialog.user_id) || 0 > 0 ? <div className={dialogBlock('Info-Unreaded-Count', {current: thisCurrentChat(dialog.user_id)})}>
                         {getUnreadedCount(dialog.user_id)}
-                    </div>
+                    </div> : null
                 }
             </div>
         </div>

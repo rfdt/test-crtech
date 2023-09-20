@@ -1,6 +1,8 @@
 import fake_data from '../fake_data.json';
 import {IDialog} from "../types/IDialog";
-import {makeAutoObservable} from "mobx";
+import {makeAutoObservable, observable} from "mobx";
+import messages from "../Blocks/Chat/Modules/Messages/Messages";
+import dialog from "../Blocks/Dialog/Dialog";
 
 class DialogsStore {
     currentChat: null | string = null;
@@ -72,7 +74,7 @@ class DialogsStore {
         }
     }
 
-    getCurrentDialogMessages = () =>{
+    get currentDialogMessages(){
         return this.getCurrentDialog()?.dialog_messages || [];
     }
 
@@ -87,8 +89,25 @@ class DialogsStore {
         this.currentChat = dialog_id;
     }
 
+    getMessageIdxCurrentChatById = (message_id: string) =>{
+        let idx = -1;
+        this.currentDialogMessages.forEach((message, forIdx)=>{
+            if (message.message_id === message_id) {idx = forIdx}
+        })
+        return idx;
+    }
 
 
+    readCurrentChatMessage = (message_id: string) =>{
+        console.log(message_id)
+        const messageIDX = this.getMessageIdxCurrentChatById(message_id);
+        this.dialogs[this.getDialogPositionInArray(this.currentChat as string) || 0].dialog_messages[messageIDX]
+            = {...this.dialogs[this.getDialogPositionInArray(this.currentChat as string) || 0].dialog_messages[messageIDX], message_read: true };
+    }
+
+    setOnline = (idx: number) =>{
+        this.dialogs[idx].user_online_status = true;
+    }
 }
 
 export default new DialogsStore(); //single-tone
