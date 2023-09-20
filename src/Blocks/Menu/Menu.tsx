@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {cn} from "../../scripts/cn";
+import {cn} from "../../utility/cn";
 import './Menu.scss';
 import {ReactComponent as DialogsSvg} from '../../assets/svg/dialogs.svg';
 import {ReactComponent as SettingsSvg} from "../../assets/svg/settings.svg";

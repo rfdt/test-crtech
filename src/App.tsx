@@ -1,22 +1,28 @@
 import React, {useEffect} from 'react';
 import './App.scss';
-import {cn} from "./scripts/cn";
+import {cn} from "./utility/cn";
 import Menu from "./Blocks/Menu/Menu";
 import Dialogs from "./Blocks/Dialogs/Dialogs";
 import Chat from "./Blocks/Chat/Chat";
 import {observer} from "mobx-react-lite";
 import DialogsStore from "./store/dialogs";
-function getRandomArbitrary(min: number, max: number) {
-    return Math.random() * (max - min) + min;
-}
+import {getRandomArbitrary} from "./utility/getRandomNumber";
+
 
 const App = observer(() =>{
 
-    const {setOnline} = DialogsStore;
+    const {fakeMessageSend, fakeOnlineActivity} = DialogsStore;
 
     useEffect(()=>{
-        const idx = getRandomArbitrary(0,3)
-        setOnline(idx);
+        setInterval(()=>{
+            fakeMessageSend()
+        }, 10000)
+    }, [])
+
+    useEffect(()=>{
+        setInterval(()=>{
+            fakeOnlineActivity()
+        }, 10000)
     }, [])
 
     return (

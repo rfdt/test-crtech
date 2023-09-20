@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {chatBlock} from "../../Chat";
 import './InputMessage.scss';
 import {IMessage} from "../../../../types/IMessage";
-import {toLocaleHourString} from "../../../../scripts/toLocaleHourString";
+import {toLocaleHourString} from "../../../../utility/toLocaleHourString";
 
 interface InputMessageProps{
     order: string;

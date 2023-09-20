@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {cn} from "../../scripts/cn";
+import {cn} from "../../utility/cn";
 import './Chat.scss';
 import {observer} from "mobx-react-lite";
 import DialogsStore from "../../store/dialogs";
@@ -13,19 +13,19 @@ export const chatBlock = cn('Chat');
 
 export const Chat = observer(() => {
 
-    const {getCurrentDialog, isCurrentExist, isLoadingChat, currentChat} = DialogsStore;
+    const {getCurrentDialog, isLoadingChat, currentChat} = DialogsStore;
 
     return (
         <div className={chatBlock()}>
             <Header/>
             {
-                currentChat && getCurrentDialog() ?
+                isLoadingChat ? <Preload/> :
                     <>
-                        {
-                            isLoadingChat ? <Preload/> : <Messages />
-                        }
+                    {
+                        currentChat && getCurrentDialog() ?
+                        <Messages /> : <EmptyChat />
+                    }
                     </>
-                    : <EmptyChat/>
             }
             <Write/>
         </div>

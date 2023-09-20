@@ -1,10 +1,10 @@
 import React, {FunctionComponent, useState} from 'react';
-import {cn} from "../../scripts/cn";
+import {cn} from "../../utility/cn";
 import './Dialog.scss';
 import {IDialog} from "../../types/IDialog";
 import {observer} from "mobx-react-lite";
 import DialogsStore from '../../store/dialogs';
-import {toLocaleHourString} from "../../scripts/toLocaleHourString";
+import {toLocaleHourString} from "../../utility/toLocaleHourString";
 
 interface DialogsProps {
     dialog: IDialog;
