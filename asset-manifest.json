@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/test-crtech/static/css/main.994a630a.css",
-    "main.js": "/test-crtech/static/js/main.caf5fc00.js",
+    "main.js": "/test-crtech/static/js/main.bc6d3f0e.js",
     "static/media/dialogs.svg": "/test-crtech/static/media/dialogs.4c05af0c6bf3bd7296b2f115a70b95d4.svg",
     "static/media/settings.svg": "/test-crtech/static/media/settings.bdf98e4d291a2759aeb8f7fd8a8ef97f.svg",
     "index.html": "/test-crtech/index.html",
     "static/media/open.svg": "/test-crtech/static/media/open.acae97295f564d85a100b76a3782397f.svg",
     "main.994a630a.css.map": "/test-crtech/static/css/main.994a630a.css.map",
-    "main.caf5fc00.js.map": "/test-crtech/static/js/main.caf5fc00.js.map"
+    "main.bc6d3f0e.js.map": "/test-crtech/static/js/main.bc6d3f0e.js.map"
   },
   "entrypoints": [
     "static/css/main.994a630a.css",
-    "static/js/main.caf5fc00.js"
+    "static/js/main.bc6d3f0e.js"
   ]
 }
