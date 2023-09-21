@@ -20,7 +20,7 @@ class DialogsStore {
     }
 
     get filteredDialogs() {
-        return this.dialogs.filter(value => value.user_name.includes(this.searchString))
+        return this.dialogs.filter(value => value.user_name.toLowerCase().includes(this.searchString))
     }
 
     get unreadedDialogsCount() {
