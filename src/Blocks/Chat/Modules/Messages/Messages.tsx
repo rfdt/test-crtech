@@ -1,4 +1,4 @@
-import React, {MutableRefObject, useEffect, useRef, useState} from 'react';
+import React, {MutableRefObject, useEffect, useRef} from 'react';
 import {Observer, observer} from "mobx-react-lite";
 import {chatBlock} from "../../Chat";
 import DialogsStore from "../../../../store/dialogs";

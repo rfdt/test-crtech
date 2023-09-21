@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {cn} from "../../utility/cn";
 import './Chat.scss';
 import {observer} from "mobx-react-lite";

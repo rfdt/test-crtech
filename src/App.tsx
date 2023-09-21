@@ -6,7 +6,6 @@ import Dialogs from "./Blocks/Dialogs/Dialogs";
 import Chat from "./Blocks/Chat/Chat";
 import {observer} from "mobx-react-lite";
 import DialogsStore from "./store/dialogs";
-import {getRandomArbitrary} from "./utility/getRandomNumber";
 
 
 const App = observer(() =>{
@@ -16,7 +15,7 @@ const App = observer(() =>{
     useEffect(()=>{
         setInterval(()=>{
             fakeMessageSend()
-        }, 10000)
+        }, 35000)
     }, [])
 
     useEffect(()=>{
