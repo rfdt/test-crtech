@@ -4,7 +4,6 @@ import './Dialog.scss';
 import {IDialog} from "../../types/IDialog";
 import {observer} from "mobx-react-lite";
 import DialogsStore from '../../store/dialogs';
-import {toLocaleHourString} from "../../utility/toLocaleHourString";
 import {DialogAvatar} from "./Modules/DialogAvatar/DialogAvatar";
 import DialogCompanion from "./Modules/DialogCompanion/DialogCompanion";
 import {DialogInfo} from "./Modules/DialogInfo/DialogInfo";

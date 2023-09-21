@@ -1,10 +1,9 @@
 import React, {MutableRefObject, useEffect, useRef} from 'react';
-import {Observer, observer} from "mobx-react-lite";
+import { observer} from "mobx-react-lite";
 import {chatBlock} from "../../Chat";
 import DialogsStore from "../../../../store/dialogs";
 import InputMessage from "../InputMessage/InputMessage";
 import OutboxMessage from "../OutboxMessage/OutboxMessage";
-// import MessageDate from "../MessageDate/MessageDate";
 
 const Messages = observer(() => {
 

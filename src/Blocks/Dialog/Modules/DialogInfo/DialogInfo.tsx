@@ -11,7 +11,7 @@ interface DialogInfoProps{
 }
 export const DialogInfo: FC<DialogInfoProps> = observer(({dialog})=>{
 
-    const {thisCurrentChat, getFirstUnreadedMessageInChat, getUnreadedCount, setDialog} = DialogsStore;
+    const {thisCurrentChat, getFirstUnreadedMessageInChat, getUnreadedCount} = DialogsStore;
 
     return(
         <div className={dialogBlock('Info')}>
